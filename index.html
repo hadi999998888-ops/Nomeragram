@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0a0910">
+<title>Номер PRO — генератор</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <header class="top">
+    <button class="menu" id="menuBtn" aria-label="Меню"><span></span><span></span><span></span></button>
+    <div class="money"><span class="coin">◆</span><b id="balance">25 249 751</b><span>₽</span></div>
+    <button class="search" id="searchBtn" aria-label="Поиск">
+      <svg viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="7.2"/><path d="m16.2 16.2 5 5"/></svg>
+    </button>
+  </header>
+
+  <main>
+    <section class="stage">
+      <div class="previous" id="previous">
+        <div class="prev-plate"><span id="prevText">X876AX</span><small id="prevRegion">550</small><em>RUS</em></div>
+        <div class="prev-bar"><span id="prevRarity">Обычный</span><strong id="prevPrice">553 ₽</strong></div>
+      </div>
+
+      <div class="rarity-card" id="rarityCard">
+        <div class="rarity-line">
+          <div><b id="rarityName">ОБЫЧНЫЙ</b><div class="dots" id="rarityDots"><i></i><i></i><i></i><i></i><i></i></div></div>
+          <strong id="currentPrice">100 ₽</strong>
+        </div>
+      </div>
+
+      <div class="plate-large" id="plateLarge">
+        <div class="plate-main"><span id="numLeft">А123АА</span><span class="region-box"><b id="region">05</b><small>RUS <i></i></small></span></div>
+      </div>
+
+      <div class="description">
+        <b id="descriptionTitle">Обычная комбинация</b>
+        <span id="descriptionText">Случайный виртуальный номер</span>
+      </div>
+
+      <div class="decision" id="decision">
+        <button class="sell" id="sellBtn">ПРОДАТЬ <span id="sellValue">100 ₽</span></button>
+        <button class="keep" id="keepBtn">ОСТАВИТЬ</button>
+      </div>
+
+      <button class="roll" id="rollBtn"><span>ПОЛУЧИТЬ НОМЕР</span><b>−100 ₽</b></button>
+      <div class="locked" id="locked">Номер сохранён. Продай его, чтобы получить следующий.</div>
+    </section>
+
+    <section class="tools">
+      <button class="tool active" data-view="generator"><span class="tool-icon">↻</span><b>Генератор</b></button>
+      <button class="tool" data-view="roulette"><span class="tool-icon">◈</span><b>Апгрейд</b></button>
+      <button class="tool" data-view="collection"><span class="tool-icon">▣</span><b>Коллекция</b></button>
+      <button class="tool" id="bonusBtn"><span class="tool-icon">✦</span><b>Бонус</b></button>
+    </section>
+
+    <section class="panel" id="roulettePanel">
+      <div class="panel-head"><div><small>UPGRADE</small><h2>Попробуй обменять номер</h2></div><span class="pill">Шанс</span></div>
+      <p class="muted">Рулетка покажет новый виртуальный номер. Обмен доступен только если выпавший вариант дороже твоего.</p>
+      <div class="upgrade-machine">
+        <div class="upgrade-pointer"></div>
+        <div class="upgrade-track" id="upgradeTrack"></div>
+        <div class="upgrade-result" id="upgradeResult">?</div>
+      </div>
+      <div class="upgrade-info"><span>Твой номер: <b id="ownedValue">—</b></span><span>Ставка: <b id="upgradeCost">50 ₽</b></span></div>
+      <button class="upgrade-btn" id="upgradeBtn">КРУТИТЬ РУЛЕТКУ</button>
+      <button class="exchange-btn" id="exchangeBtn" disabled>ОБМЕНЯТЬ НА ВЫПАВШИЙ</button>
+      <div class="upgrade-note" id="upgradeNote">Сначала оставь номер в генераторе.</div>
+    </section>
+
+    <section class="panel collection-panel" id="collectionPanel">
+      <div class="panel-head"><div><small>МОЯ КОЛЛЕКЦИЯ</small><h2>Сохранённые номера</h2></div><button class="clear" id="clearBtn">Очистить</button></div>
+      <div id="collection" class="collection-empty">Здесь появятся номера, которые ты оставишь.</div>
+    </section>
+
+    <section class="panel bonus-panel">
+      <div class="panel-head"><div><small>КАЖДЫЕ 24 ЧАСА</small><h2>Ежедневный бонус</h2></div><span class="gift">✦</span></div>
+      <div class="bonus-box"><div><b>+ 1 000 ₽</b><span id="bonusStatus">Готово к получению</span></div><button id="claimBonus">ЗАБРАТЬ</button></div>
+    </section>
+  </main>
+
+  <nav class="bottom">
+    <button class="bottom-item active" data-view="generator"><span>⌂</span>Главная</button>
+    <button class="bottom-item" data-view="roulette"><span>◈</span>Апгрейд</button>
+    <button class="bottom-item" data-view="collection"><span>▣</span>Коллекция</button>
+  </nav>
+</div>
+<div class="toast" id="toast"></div>
+<div class="modal" id="searchModal"><div class="modal-card"><button class="close" id="closeSearch">×</button><h2>Поиск номера</h2><input id="searchInput" placeholder="Например, А123АА"><button id="searchDo">НАЙТИ В КОЛЛЕКЦИИ</button><div id="searchResult"></div></div></div>
+<script src="app.js"></script>
+</body>
+</html>
